@@ -17,8 +17,8 @@ import numpy as np
 import pytest
 import torch
 
-from lerobot.data.streaming_dataset import StreamingLeRobotDataset
-from lerobot.data.utils import safe_shard
+from lerobot.datasets.streaming_dataset import StreamingLeRobotDataset
+from lerobot.datasets.utils import safe_shard
 from lerobot.utils.constants import ACTION
 from tests.fixtures.constants import DUMMY_REPO_ID
 

@@ -62,8 +62,8 @@ from torch.optim.optimizer import Optimizer
 from lerobot.cameras import opencv  # noqa: F401
 from lerobot.configs import parser
 from lerobot.configs.train import TrainRLServerPipelineConfig
-from lerobot.data.factory import make_dataset
-from lerobot.data.lerobot_dataset import LeRobotDataset
+from lerobot.datasets.factory import make_dataset
+from lerobot.datasets.lerobot_dataset import LeRobotDataset
 from lerobot.policies.factory import make_policy
 from lerobot.policies.sac.modeling_sac import SACPolicy
 from lerobot.rl.buffer import ReplayBuffer, concatenate_batch_transitions

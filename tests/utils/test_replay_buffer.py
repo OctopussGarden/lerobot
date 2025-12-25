@@ -20,7 +20,7 @@ from collections.abc import Callable
 import pytest
 import torch
 
-from lerobot.data.lerobot_dataset import LeRobotDataset
+from lerobot.datasets.lerobot_dataset import LeRobotDataset
 from lerobot.rl.buffer import BatchTransition, ReplayBuffer, random_crop_vectorized
 from lerobot.utils.constants import ACTION, DONE, OBS_IMAGE, OBS_STATE, OBS_STR, REWARD
 from tests.fixtures.constants import DUMMY_REPO_ID

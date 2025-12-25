@@ -46,7 +46,7 @@ from pathlib import Path
 from pprint import pformat
 
 from lerobot.configs import parser
-from lerobot.data.lerobot_dataset import LeRobotDataset
+from lerobot.datasets.lerobot_dataset import LeRobotDataset
 from lerobot.processor import (
     make_default_robot_action_processor,
 )

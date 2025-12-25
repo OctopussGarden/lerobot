@@ -33,7 +33,7 @@ from pathlib import Path
 import pytest
 import torch
 
-from lerobot.data.lerobot_dataset import LeRobotDataset
+from lerobot.datasets.lerobot_dataset import LeRobotDataset
 
 
 def get_num_available_gpus():

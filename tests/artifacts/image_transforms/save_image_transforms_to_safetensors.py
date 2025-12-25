@@ -18,8 +18,8 @@ from pathlib import Path
 import torch
 from safetensors.torch import save_file
 
-from lerobot.data.lerobot_dataset import LeRobotDataset
-from lerobot.data.transforms import (
+from lerobot.datasets.lerobot_dataset import LeRobotDataset
+from lerobot.datasets.transforms import (
     ImageTransformConfig,
     ImageTransforms,
     ImageTransformsConfig,

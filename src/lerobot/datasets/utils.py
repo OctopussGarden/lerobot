@@ -39,7 +39,7 @@ from PIL import Image as PILImage
 from torchvision import transforms
 
 from lerobot.configs.types import FeatureType, PolicyFeature
-from lerobot.data.backward_compatibility import (
+from lerobot.datasets.backward_compatibility import (
     FUTURE_MESSAGE,
     BackwardCompatibilityError,
     ForwardCompatibilityError,

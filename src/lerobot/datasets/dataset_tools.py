@@ -35,10 +35,10 @@ import pyarrow.parquet as pq
 import torch
 from tqdm import tqdm
 
-from lerobot.data.aggregate import aggregate_datasets
-from lerobot.data.compute_stats import aggregate_stats
-from lerobot.data.lerobot_dataset import LeRobotDataset, LeRobotDatasetMetadata
-from lerobot.data.utils import (
+from lerobot.datasets.aggregate import aggregate_datasets
+from lerobot.datasets.compute_stats import aggregate_stats
+from lerobot.datasets.lerobot_dataset import LeRobotDataset, LeRobotDatasetMetadata
+from lerobot.datasets.utils import (
     DATA_DIR,
     DEFAULT_CHUNK_SIZE,
     DEFAULT_DATA_FILE_SIZE_IN_MB,
@@ -815,7 +815,7 @@ def _copy_and_reindex_episodes_metadata(
         data_metadata: Dict mapping new episode index to its data file metadata
         video_metadata: Optional dict mapping new episode index to its video metadata
     """
-    from lerobot.data.utils import flatten_dict
+    from lerobot.datasets.utils import flatten_dict
 
     if src_dataset.meta.episodes is None:
         src_dataset.meta.episodes = load_episodes(src_dataset.meta.root)
@@ -908,7 +908,7 @@ def _write_parquet(df: pd.DataFrame, path: Path, meta: LeRobotDatasetMetadata) -
 
     This ensures images are properly embedded and the file can be loaded correctly by HF datasets.
     """
-    from lerobot.data.utils import embed_images, get_hf_features_from_features
+    from lerobot.datasets.utils import embed_images, get_hf_features_from_features
 
     hf_features = get_hf_features_from_features(meta.features)
     ep_dataset = datasets.Dataset.from_dict(df.to_dict(orient="list"), features=hf_features, split="train")

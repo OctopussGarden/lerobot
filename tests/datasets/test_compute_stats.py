@@ -18,7 +18,7 @@ from unittest.mock import patch
 import numpy as np
 import pytest
 
-from lerobot.data.compute_stats import (
+from lerobot.datasets.compute_stats import (
     RunningQuantileStats,
     _assert_type_and_shape,
     aggregate_feature_stats,
@@ -399,7 +399,7 @@ def test_running_quantile_stats_get_statistics_with_quantiles():
     assert expected_keys.issubset(set(stats.keys()))
 
     # Verify quantile values are reasonable
-    from lerobot.data.compute_stats import DEFAULT_QUANTILES
+    from lerobot.datasets.compute_stats import DEFAULT_QUANTILES
 
     for i, q in enumerate(DEFAULT_QUANTILES):
         q_key = f"q{int(q * 100):02d}"

@@ -25,7 +25,7 @@ import torch
 
 from lerobot.cameras import opencv  # noqa: F401
 from lerobot.configs import parser
-from lerobot.data.lerobot_dataset import LeRobotDataset
+from lerobot.datasets.lerobot_dataset import LeRobotDataset
 from lerobot.envs.configs import HILSerlRobotEnvConfig
 from lerobot.model.kinematics import RobotKinematics
 from lerobot.processor import (

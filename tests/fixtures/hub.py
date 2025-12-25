@@ -18,7 +18,7 @@ import pandas as pd
 import pytest
 from huggingface_hub.utils import filter_repo_objects
 
-from lerobot.data.utils import (
+from lerobot.datasets.utils import (
     DEFAULT_CHUNK_SIZE,
     DEFAULT_DATA_FILE_SIZE_IN_MB,
     DEFAULT_DATA_PATH,

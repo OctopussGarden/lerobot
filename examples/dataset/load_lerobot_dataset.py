@@ -32,7 +32,7 @@ import torch
 from huggingface_hub import HfApi
 
 import lerobot
-from lerobot.data.lerobot_dataset import LeRobotDataset, LeRobotDatasetMetadata
+from lerobot.datasets.lerobot_dataset import LeRobotDataset, LeRobotDatasetMetadata
 
 
 def main():

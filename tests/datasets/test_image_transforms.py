@@ -21,7 +21,7 @@ from safetensors.torch import load_file
 from torchvision.transforms import v2
 from torchvision.transforms.v2 import functional as F  # noqa: N812
 
-from lerobot.data.transforms import (
+from lerobot.datasets.transforms import (
     ImageTransformConfig,
     ImageTransforms,
     ImageTransformsConfig,

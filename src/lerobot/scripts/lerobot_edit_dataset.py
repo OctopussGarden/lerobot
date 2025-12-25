@@ -100,15 +100,15 @@ import pandas as pd
 from tqdm import tqdm
 
 from lerobot.configs import parser
-from lerobot.data.dataset_tools import (
+from lerobot.datasets.dataset_tools import (
     delete_episodes,
     merge_datasets,
     remove_feature,
     split_dataset,
 )
-from lerobot.data.lerobot_dataset import LeRobotDataset, LeRobotDatasetMetadata
-from lerobot.data.utils import write_stats, write_tasks
-from lerobot.data.video_utils import encode_video_frames, get_video_info
+from lerobot.datasets.lerobot_dataset import LeRobotDataset, LeRobotDatasetMetadata
+from lerobot.datasets.utils import write_stats, write_tasks
+from lerobot.datasets.video_utils import encode_video_frames, get_video_info
 from lerobot.utils.constants import HF_LEROBOT_HOME, OBS_IMAGE
 from lerobot.utils.utils import init_logging
 
@@ -576,7 +576,7 @@ def convert_dataset_to_videos(
                 )
                 new_meta.info["features"][img_key]["info"] = get_video_info(video_path)
 
-        from lerobot.data.utils import write_info
+        from lerobot.datasets.utils import write_info
 
         write_info(new_meta.info, new_meta.root)
 
@@ -615,7 +615,7 @@ def _copy_data_without_images(
         episode_indices: Episodes to include
         img_keys: Image keys to remove
     """
-    from lerobot.data.utils import DATA_DIR
+    from lerobot.datasets.utils import DATA_DIR
 
     data_dir = src_dataset.root / DATA_DIR
     parquet_files = sorted(data_dir.glob("*/*.parquet"))

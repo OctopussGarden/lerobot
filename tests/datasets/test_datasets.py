@@ -28,13 +28,13 @@ from safetensors.torch import load_file
 import lerobot
 from lerobot.configs.default import DatasetConfig
 from lerobot.configs.train import TrainPipelineConfig
-from lerobot.data.factory import make_dataset
-from lerobot.data.image_writer import image_array_to_pil_image
-from lerobot.data.lerobot_dataset import (
+from lerobot.datasets.factory import make_dataset
+from lerobot.datasets.image_writer import image_array_to_pil_image
+from lerobot.datasets.lerobot_dataset import (
     LeRobotDataset,
     MultiLeRobotDataset,
 )
-from lerobot.data.utils import (
+from lerobot.datasets.utils import (
     DEFAULT_CHUNK_SIZE,
     DEFAULT_DATA_FILE_SIZE_IN_MB,
     DEFAULT_VIDEO_FILE_SIZE_IN_MB,
@@ -1268,7 +1268,7 @@ def test_frames_in_current_file_calculation(tmp_path, empty_lerobot_dataset_fact
 
     dataset.finalize()
 
-    from lerobot.data.utils import load_episodes
+    from lerobot.datasets.utils import load_episodes
 
     dataset.meta.episodes = load_episodes(dataset.root)
     assert dataset.meta.episodes is not None

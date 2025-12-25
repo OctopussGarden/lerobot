@@ -21,8 +21,8 @@ import numpy as np
 import torch
 from datasets import load_dataset
 
-from lerobot.data.lerobot_dataset import CODEBASE_VERSION, LeRobotDatasetMetadata
-from lerobot.data.utils import (
+from lerobot.datasets.lerobot_dataset import CODEBASE_VERSION, LeRobotDatasetMetadata
+from lerobot.datasets.utils import (
     Backtrackable,
     LookAheadError,
     LookBackError,
@@ -33,7 +33,7 @@ from lerobot.data.utils import (
     item_to_torch,
     safe_shard,
 )
-from lerobot.data.video_utils import (
+from lerobot.datasets.video_utils import (
     VideoDecoderCache,
     decode_video_frames_torchcodec,
 )

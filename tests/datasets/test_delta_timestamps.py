@@ -13,7 +13,7 @@
 # limitations under the License.
 import pytest
 
-from lerobot.data.utils import (
+from lerobot.datasets.utils import (
     check_delta_timestamps,
     get_delta_indices,
 )

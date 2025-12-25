@@ -16,7 +16,7 @@ import queue
 
 # Third-party imports
 import numpy as np
-from lerobot.data.lerobot_dataset import LeRobotDataset
+from lerobot.datasets.lerobot_dataset import LeRobotDataset
 
 # Local imports
 from XLeVR.vr_monitor import VRMonitor

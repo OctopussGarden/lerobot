@@ -23,7 +23,7 @@ import numpy as np
 import torch
 from safetensors.torch import load_file, save_file
 
-from lerobot.data.utils import flatten_dict, unflatten_dict
+from lerobot.datasets.utils import flatten_dict, unflatten_dict
 from lerobot.utils.constants import RNG_STATE
 
 

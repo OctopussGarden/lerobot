@@ -26,7 +26,7 @@ import torch
 import torch.nn as nn
 
 from lerobot.configs.types import FeatureType, PipelineFeatureType, PolicyFeature
-from lerobot.data.pipeline_features import aggregate_pipeline_dataset_features
+from lerobot.datasets.pipeline_features import aggregate_pipeline_dataset_features
 from lerobot.processor import (
     DataProcessorPipeline,
     EnvTransition,

@@ -28,8 +28,8 @@ import numpy as np
 import torch
 from deepdiff import DeepDiff
 
-from lerobot.data.lerobot_dataset import LeRobotDataset
-from lerobot.data.utils import DEFAULT_FEATURES
+from lerobot.datasets.lerobot_dataset import LeRobotDataset
+from lerobot.datasets.utils import DEFAULT_FEATURES
 from lerobot.policies.pretrained import PreTrainedPolicy
 from lerobot.policies.utils import prepare_observation_for_inference
 from lerobot.processor import PolicyAction, PolicyProcessorPipeline
