@@ -16,7 +16,7 @@
 
 import time
 
-from lerobot.datasets.lerobot_dataset import LeRobotDataset
+from lerobot.data.lerobot_dataset import LeRobotDataset
 from lerobot.model.kinematics import RobotKinematics
 from lerobot.processor import RobotAction, RobotObservation, RobotProcessorPipeline
 from lerobot.processor.converters import (

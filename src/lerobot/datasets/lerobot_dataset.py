@@ -33,9 +33,9 @@ import torch.utils
 from huggingface_hub import HfApi, snapshot_download
 from huggingface_hub.errors import RevisionNotFoundError
 
-from lerobot.datasets.compute_stats import aggregate_stats, compute_episode_stats
-from lerobot.datasets.image_writer import AsyncImageWriter, write_image
-from lerobot.datasets.utils import (
+from lerobot.data.compute_stats import aggregate_stats, compute_episode_stats
+from lerobot.data.image_writer import AsyncImageWriter, write_image
+from lerobot.data.utils import (
     DEFAULT_EPISODES_PATH,
     DEFAULT_FEATURES,
     DEFAULT_IMAGE_PATH,
@@ -66,7 +66,7 @@ from lerobot.datasets.utils import (
     write_stats,
     write_tasks,
 )
-from lerobot.datasets.video_utils import (
+from lerobot.data.video_utils import (
     VideoFrame,
     concatenate_video_files,
     decode_video_frames,

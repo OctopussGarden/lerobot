@@ -20,7 +20,7 @@ import numpy as np
 import pytest
 from PIL import Image
 
-from lerobot.datasets.image_writer import (
+from lerobot.data.image_writer import (
     AsyncImageWriter,
     image_array_to_pil_image,
     safe_stop_image_writer,

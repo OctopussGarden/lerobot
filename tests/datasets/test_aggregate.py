@@ -18,8 +18,8 @@ from unittest.mock import patch
 
 import torch
 
-from lerobot.datasets.aggregate import aggregate_datasets
-from lerobot.datasets.lerobot_dataset import LeRobotDataset
+from lerobot.data.aggregate import aggregate_datasets
+from lerobot.data.lerobot_dataset import LeRobotDataset
 from tests.fixtures.constants import DUMMY_REPO_ID
 
 

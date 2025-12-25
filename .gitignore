@@ -177,3 +177,10 @@ outputs/
 *.urdf
 *.xml
 *.part
+
+# Models
+models/
+*.pt
+
+# Miscell
+mobileclip_blt.ts

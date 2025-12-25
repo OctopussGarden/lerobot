@@ -16,7 +16,7 @@
 
 import time
 
-from lerobot.datasets.lerobot_dataset import LeRobotDataset
+from lerobot.data.lerobot_dataset import LeRobotDataset
 from lerobot.robots.lekiwi.config_lekiwi import LeKiwiClientConfig
 from lerobot.robots.lekiwi.lekiwi_client import LeKiwiClient
 from lerobot.utils.constants import ACTION

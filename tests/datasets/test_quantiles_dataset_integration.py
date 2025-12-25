@@ -19,7 +19,7 @@
 import numpy as np
 import pytest
 
-from lerobot.datasets.lerobot_dataset import LeRobotDataset
+from lerobot.data.lerobot_dataset import LeRobotDataset
 
 
 def mock_load_image_as_numpy(path, dtype, channel_first):

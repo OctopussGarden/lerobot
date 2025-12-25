@@ -5,8 +5,8 @@ from pathlib import Path
 import torch
 
 from lerobot.configs.types import FeatureType
-from lerobot.datasets.lerobot_dataset import LeRobotDataset, LeRobotDatasetMetadata
-from lerobot.datasets.utils import dataset_to_policy_features
+from lerobot.data.lerobot_dataset import LeRobotDataset, LeRobotDatasetMetadata
+from lerobot.data.utils import dataset_to_policy_features
 from lerobot.policies.act.configuration_act import ACTConfig
 from lerobot.policies.act.modeling_act import ACTPolicy
 from lerobot.policies.factory import make_pre_post_processors

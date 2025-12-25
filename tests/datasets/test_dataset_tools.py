@@ -21,7 +21,7 @@ import numpy as np
 import pytest
 import torch
 
-from lerobot.datasets.dataset_tools import (
+from lerobot.data.dataset_tools import (
     add_features,
     delete_episodes,
     merge_datasets,
@@ -1019,7 +1019,7 @@ def test_modify_features_preserves_file_structure(sample_dataset, tmp_path):
 
         # Get original chunk/file indices from first episode
         if train_dataset.meta.episodes is None:
-            from lerobot.datasets.utils import load_episodes
+            from lerobot.data.utils import load_episodes
 
             train_dataset.meta.episodes = load_episodes(train_dataset.meta.root)
         original_chunk_indices = [ep["data/chunk_index"] for ep in train_dataset.meta.episodes]
@@ -1039,7 +1039,7 @@ def test_modify_features_preserves_file_structure(sample_dataset, tmp_path):
 
         # Check that chunk/file indices are preserved
         if modified_dataset.meta.episodes is None:
-            from lerobot.datasets.utils import load_episodes
+            from lerobot.data.utils import load_episodes
 
             modified_dataset.meta.episodes = load_episodes(modified_dataset.meta.root)
         new_chunk_indices = [ep["data/chunk_index"] for ep in modified_dataset.meta.episodes]
@@ -1052,7 +1052,7 @@ def test_modify_features_preserves_file_structure(sample_dataset, tmp_path):
 
 def test_convert_dataset_to_videos(tmp_path):
     """Test converting lerobot/pusht_image dataset to video format."""
-    from lerobot.datasets.lerobot_dataset import LeRobotDataset
+    from lerobot.data.lerobot_dataset import LeRobotDataset
 
     # Load the actual lerobot/pusht_image dataset (only first 2 episodes for speed)
     source_dataset = LeRobotDataset("lerobot/pusht_image", episodes=[0, 1])
@@ -1115,7 +1115,7 @@ def test_convert_dataset_to_videos(tmp_path):
 
 def test_convert_dataset_to_videos_subset_episodes(tmp_path):
     """Test converting only specific episodes from lerobot/pusht_image to video format."""
-    from lerobot.datasets.lerobot_dataset import LeRobotDataset
+    from lerobot.data.lerobot_dataset import LeRobotDataset
 
     # Load the actual lerobot/pusht_image dataset (only first 3 episodes)
     source_dataset = LeRobotDataset("lerobot/pusht_image", episodes=[0, 1, 2])
