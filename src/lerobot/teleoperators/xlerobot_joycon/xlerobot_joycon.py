@@ -456,12 +456,13 @@ class JoyconEventHandler:
     def __init__(self, teleop: "XLerobotJoyconTeleop"):
         self.teleop = teleop
         self.events = {
-            "exit_early": False,
-            "rerecord_episode": False,
-            "reset_position": False,
-            "take_screenshot": False,  # New event
+            "exit_early": False, # button minus
+            "rerecord_episode": False, # button plus
+            "stop_recording": False, # button capture
+            "reset_position": False, # button home
+            "back_position": False, # putton l && button r, In the bucket
         }
-        self.prev = {"left_minus": 0, "right_plus": 0, "right_home": 0, "screenshot": 0}
+        self.prev = {"left_minus": 0, "right_plus": 0, "right_home": 0, "capture": 0, "left_l": 0, "right_r": 0}
 
     def update(self):
         left = self.teleop.left_joycon
@@ -475,12 +476,12 @@ class JoyconEventHandler:
                 
                 # Screenshot button on Left Joy-Con (capture button)
                 capture = left.joycon.get_button_capture()
-                if capture == 1 and self.prev["screenshot"] == 0:
-                    self.events["take_screenshot"] = True
-                    logger.info("📸 Screenshot/Recording triggered!")
+                if capture == 1 and self.prev["capture"] == 0:
+                    self.events["stop_recording"] = True
+                    logger.info("Recording triggered!")
                 else:
-                    self.events["take_screenshot"] = False
-                self.prev["screenshot"] = capture
+                    self.events["stop_recording"] = False
+                self.prev["capture"] = capture
 
             if right:
                 plus = right.joycon.get_button_plus()
@@ -497,11 +498,16 @@ class JoyconEventHandler:
                 
                 # Check for reset combo: Minus (Left) + Plus (Right) + Home (Right)
                 if left and right:
-                    if left.joycon.get_button_minus() == 1 and \
-                       right.joycon.get_button_plus() == 1 and \
-                       right.joycon.get_button_home() == 1:
-                        self.events["reset_position"] = True
-                        logger.info("🔄 Zero Position Reset Combo Triggered!")
+                    left_l = left.joycon.get_button_l()
+                    right_r = right.joycon.get_button_r()
+                    if (left_l == 1 and self.prev["left_l"] == 0) and \
+                       (right_r == 1 and self.prev["right_r"] == 0):
+                        self.events["back_position"] = True
+                        logger.info("Back to bucket position!")
+                    else:
+                        self.events["back_position"] = False
+                    self.prev["left_l"] = left_l
+                    self.prev["right_r"] = right_r
 
         except Exception as e:
             logger.debug(f"Joy-Con event update failed: {e}")
@@ -796,7 +802,7 @@ class XLerobotJoyconTeleop(Teleoperator):
             if ev.get("exit_early") or ev.get("rerecord_episode"):
                 self.event_handler.reset_events()
             return ev
-        return {"exit_early": False, "rerecord_episode": False, "reset_position": False}
+        return {"exit_early": False, "rerecord_episode": False, "stop_recording": False, "reset_position": False, "back_position": False}
 
     def reset_joycon_events(self):
         """
@@ -870,7 +876,7 @@ class XLerobotJoyconTeleop(Teleoperator):
 
 def init_joycon_listener(teleop_joycon: XLerobotJoyconTeleop):
     if not isinstance(teleop_joycon, XLerobotJoyconTeleop):
-        return None, {"exit_early": False, "rerecord_episode": False, "reset_position": False}
+        return None, {"exit_early": False, "rerecord_episode": False, "stop_recording": False, "reset_position": False, "back_position": False}  # pyright: ignore[reportUnreachable]
     teleop_joycon.print_joycon_control_guide()
     class JoyconListener:
         def __init__(self, teleop_joycon):

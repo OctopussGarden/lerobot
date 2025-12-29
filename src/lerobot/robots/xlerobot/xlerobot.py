@@ -523,7 +523,7 @@ class XLerobot(Robot):
             "theta.vel": theta_cmd,
         }
 
-    def get_observation(self) -> dict[str, Any]:
+    def get_observation(self, use_camera: bool = True) -> dict[str, Any]:
         if not self.is_connected:
             raise DeviceNotConnectedError(f"{self} is not connected.")
 
@@ -550,11 +550,12 @@ class XLerobot(Robot):
         logger.debug(f"{self} read state: {dt_ms:.1f}ms")
 
         # Capture images from cameras
-        for cam_key, cam in self.cameras.items():
-            start = time.perf_counter()
-            obs_dict[cam_key] = cam.async_read()
-            dt_ms = (time.perf_counter() - start) * 1e3
-            logger.debug(f"{self} read {cam_key}: {dt_ms:.1f}ms")
+        if use_camera:
+            for cam_key, cam in self.cameras.items():
+                start = time.perf_counter()
+                obs_dict[cam_key] = cam.async_read()
+                dt_ms = (time.perf_counter() - start) * 1e3
+                logger.debug(f"{self} read {cam_key}: {dt_ms:.1f}ms")
 
         return obs_dict
 

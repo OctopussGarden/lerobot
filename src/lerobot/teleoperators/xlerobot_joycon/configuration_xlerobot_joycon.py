@@ -26,19 +26,25 @@ class XLerobotJoyconTeleopConfig(TeleoperatorConfig):
     """
     Configuration for Joy-Con teleoperation of XLerobot.
     """
+    # Joystick center positions
     right_stick_v_center: int = 1900
     right_stick_h_center: int = 2100
     left_stick_v_center: int = 2300
     left_stick_h_center: int = 2000
-    kp: float = 1.0
+    # Proportional gain for degree of freedom control
+    kp: float = 0.5
+    # Degree of freedom speed
     dof_speed: List[float] = None
+    # Base control parameters
     base_acceleration_rate: float = 2.0
     base_deceleration_rate: float = 2.5
     base_max_speed: float = 3.0
+    # Gripper control parameters
     gripper_speed: float = 0.3
     gripper_min: float = 0.0
     gripper_max: float = 90.0
     change_down_to_gripper: bool = False
+    # Joy-Con control parameters
     joycon_reconnect_attempts: int = 3
     joycon_connection_timeout_s: float = 10.0
     

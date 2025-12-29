@@ -20,7 +20,7 @@ from typing import Any
 import numpy as np
 import zmq
 
-from lerobot.utils.robot_utils import busy_wait
+from lerobot.utils.robot_utils import precise_sleep
 
 from .xlerobot_2wheels import XLerobot2Wheels
 from .config_xlerobot_2wheels import XLerobot2WheelsConfig, XLerobot2WheelsHostConfig
@@ -114,7 +114,7 @@ class XLerobot2WheelsHost:
                 loop_duration = time.time() - loop_start
                 target_dt = 1.0 / self.host_config.max_loop_freq_hz
                 if loop_duration < target_dt:
-                    busy_wait(target_dt - loop_duration)
+                    precise_sleep(max(target_dt - loop_duration, 0.0))
                 
         except KeyboardInterrupt:
             logger.info("Received keyboard interrupt, stopping host")

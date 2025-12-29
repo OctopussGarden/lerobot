@@ -688,7 +688,11 @@ def build_dataset_frame(
         if key in DEFAULT_FEATURES or not key.startswith(prefix):
             continue
         elif ft["dtype"] == "float32" and len(ft["shape"]) == 1:
-            frame[key] = np.array([values[name] for name in ft["names"]], dtype=np.float32)
+            try:
+                frame[key] = np.array([values[name] for name in ft["names"]], dtype=np.float32)
+            except KeyError as e:
+                logging.warning(f"Missing key {e} for feature {key}, using NaN")
+                frame[key] = np.array([values.get(name, np.nan) for name in ft["names"]], dtype=np.float32)
         elif ft["dtype"] in ["image", "video"]:
             frame[key] = values[key.removeprefix(f"{prefix}.images.")]
 
